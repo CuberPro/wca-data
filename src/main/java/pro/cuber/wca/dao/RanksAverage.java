@@ -1,6 +1,7 @@
 package pro.cuber.wca.dao;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @IdClass(RanksAveragePK.class)
@@ -83,10 +84,8 @@ public class RanksAverage {
         if (worldRank != that.worldRank) return false;
         if (continentRank != that.continentRank) return false;
         if (countryRank != that.countryRank) return false;
-        if (personId != null ? !personId.equals(that.personId) : that.personId != null) return false;
-        if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
-
-        return true;
+        if (!Objects.equals(personId, that.personId)) return false;
+        return Objects.equals(eventId, that.eventId);
     }
 
     @Override
