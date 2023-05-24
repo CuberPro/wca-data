@@ -4,6 +4,7 @@ import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Table(name = "KinchScores", schema = "wca")
@@ -141,20 +142,18 @@ public class KinchScore implements Persistable<KinchScorePK> {
 
         KinchScore that = (KinchScore) o;
 
-        if (personId != null ? !personId.equals(that.personId) : that.personId != null) return false;
-        if (countryId != null ? !countryId.equals(that.countryId) : that.countryId != null) return false;
-        if (continentId != null ? !continentId.equals(that.continentId) : that.continentId != null) return false;
-        if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
-        if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
-        if (worldSame != null ? !worldSame.equals(that.worldSame) : that.worldSame != null) return false;
-        if (worldAll != null ? !worldAll.equals(that.worldAll) : that.worldAll != null) return false;
-        if (continentSame != null ? !continentSame.equals(that.continentSame) : that.continentSame != null)
+        if (!Objects.equals(personId, that.personId)) return false;
+        if (!Objects.equals(countryId, that.countryId)) return false;
+        if (!Objects.equals(continentId, that.continentId)) return false;
+        if (!Objects.equals(gender, that.gender)) return false;
+        if (!Objects.equals(eventId, that.eventId)) return false;
+        if (!Objects.equals(worldSame, that.worldSame)) return false;
+        if (!Objects.equals(worldAll, that.worldAll)) return false;
+        if (!Objects.equals(continentSame, that.continentSame))
             return false;
-        if (continentAll != null ? !continentAll.equals(that.continentAll) : that.continentAll != null) return false;
-        if (countrySame != null ? !countrySame.equals(that.countrySame) : that.countrySame != null) return false;
-        if (countryAll != null ? !countryAll.equals(that.countryAll) : that.countryAll != null) return false;
-
-        return true;
+        if (!Objects.equals(continentAll, that.continentAll)) return false;
+        if (!Objects.equals(countrySame, that.countrySame)) return false;
+        return Objects.equals(countryAll, that.countryAll);
     }
 
     @Override

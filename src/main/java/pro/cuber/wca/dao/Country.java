@@ -1,6 +1,7 @@
 package pro.cuber.wca.dao;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Countries", schema = "wca")
@@ -57,10 +58,10 @@ public class Country {
 
         Country country = (Country) o;
 
-        if (id != null ? !id.equals(country.id) : country.id != null) return false;
-        if (name != null ? !name.equals(country.name) : country.name != null) return false;
-        if (continentId != null ? !continentId.equals(country.continentId) : country.continentId != null) return false;
-        return iso2 != null ? iso2.equals(country.iso2) : country.iso2 == null;
+        if (!Objects.equals(id, country.id)) return false;
+        if (!Objects.equals(name, country.name)) return false;
+        if (!Objects.equals(continentId, country.continentId)) return false;
+        return Objects.equals(iso2, country.iso2);
     }
 
     @Override
