@@ -99,16 +99,17 @@ public class KinchCalculationService {
     private KinchScore buildKinchScore(String eventId, Map<String, Integer> records, String personId,
                                        String countryId, String continentId, String gender, int best,
                                        KinchScore result) {
+        String normalizedGender = normalizeGender(gender);
+
         if (result == null) {
             result = new KinchScore();
             result.setPersonId(personId);
             result.setCountryId(countryId);
             result.setContinentId(continentId);
-            result.setGender(gender);
+            result.setGender(normalizedGender);
             result.setEventId(eventId);
         }
 
-        String normalizedGender = normalizeGender(gender);
         result.setWorldAll(better(kinchScore(eventId, records, getRecordKey(null, "a"), best), result.getWorldAll()));
         result.setWorldSame(better(kinchScore(eventId, records, getRecordKey(null, normalizedGender), best),
             result.getWorldSame()));
@@ -173,7 +174,7 @@ public class KinchCalculationService {
     }
 
     private static String normalizeGender(String gender) {
-        return "".equals(gender) ? "u" : gender; // u stands for unknown
+        return "".equals(gender) || gender == null ? "u" : gender; // u stands for unknown
     }
 
     private String getRecordKey(String regionName, String gender) {

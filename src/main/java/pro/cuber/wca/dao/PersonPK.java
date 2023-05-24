@@ -3,6 +3,7 @@ package pro.cuber.wca.dao;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class PersonPK implements Serializable {
     private String id;
@@ -36,7 +37,7 @@ public class PersonPK implements Serializable {
         PersonPK personPK = (PersonPK) o;
 
         if (subid != personPK.subid) return false;
-        return id != null ? id.equals(personPK.id) : personPK.id == null;
+        return Objects.equals(id, personPK.id);
     }
 
     @Override

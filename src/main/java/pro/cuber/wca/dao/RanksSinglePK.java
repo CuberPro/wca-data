@@ -3,6 +3,7 @@ package pro.cuber.wca.dao;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class RanksSinglePK implements Serializable {
     private String personId;
@@ -35,10 +36,8 @@ public class RanksSinglePK implements Serializable {
 
         RanksSinglePK that = (RanksSinglePK) o;
 
-        if (personId != null ? !personId.equals(that.personId) : that.personId != null) return false;
-        if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
-
-        return true;
+        if (!Objects.equals(personId, that.personId)) return false;
+        return Objects.equals(eventId, that.eventId);
     }
 
     @Override

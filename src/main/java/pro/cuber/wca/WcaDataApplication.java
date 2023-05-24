@@ -11,7 +11,7 @@ import pro.cuber.wca.service.KinchCalculationService;
 @SpringBootApplication
 public class WcaDataApplication implements CommandLineRunner {
 
-    private static Logger logger = LoggerFactory.getLogger(WcaDataApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(WcaDataApplication.class);
 
     private KinchCalculationService kinchCalculationService;
 
@@ -20,7 +20,7 @@ public class WcaDataApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         long start = System.currentTimeMillis();
         kinchCalculationService.calculateKinch();
         logger.info("Total time: " + (System.currentTimeMillis() - start) / 1000.0 + " seconds.");

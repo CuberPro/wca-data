@@ -1,6 +1,7 @@
 package pro.cuber.wca.dao;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Persons", schema = "wca")
@@ -70,10 +71,10 @@ public class Person {
         Person person = (Person) o;
 
         if (subid != person.subid) return false;
-        if (id != null ? !id.equals(person.id) : person.id != null) return false;
-        if (name != null ? !name.equals(person.name) : person.name != null) return false;
-        if (countryId != null ? !countryId.equals(person.countryId) : person.countryId != null) return false;
-        return gender != null ? gender.equals(person.gender) : person.gender == null;
+        if (!Objects.equals(id, person.id)) return false;
+        if (!Objects.equals(name, person.name)) return false;
+        if (!Objects.equals(countryId, person.countryId)) return false;
+        return Objects.equals(gender, person.gender);
     }
 
     @Override
